@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tips</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Serif Khmer", serif;
+      background: #FAF7F2;
+      color: #1E1A16;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.97);
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      color: #8B2500;
+      font-weight: 700;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      color: #6B6055;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #8B2500;
+    }
+
+    .nav-links a.active {
+      color: #8B2500;
+      border-bottom: 2px solid #8B2500;
+      padding-bottom: 2px;
+    }
+
+    .nav-btn {
+      background: #8B2500;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .mobile-contact {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1E1A16;
+      border-radius: 2px;
+    }
+
+    .page-hero {
+      position: relative;
+      height: 300px;
+      margin-top: 62px;
+      display: flex;
+      align-items: center;
+    }
+
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/kep.jpg') center / cover;
+    }
+
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero h1 {
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: #8B2500;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: #6B6055;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+
+    .prac-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .prac-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+
+    .prac-card.sage {
+      background: #EEF2EE;
+    }
+
+    .prac-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prac-card p {
+      font-size: 0.9rem;
+      color: #6B6055;
+      margin-bottom: 10px;
+    }
+
+    .prac-card ul {
+      list-style: none;
+    }
+
+    .prac-card ul li {
+      font-size: 0.85rem;
+      color: #6B6055;
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+
+    .prac-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #4A5E4A;
+    }
+
+    .weather-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .weather-pill {
+      background: rgba(255,255,255,0.7);
+      border-radius: 6px;
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .weather-pill strong {
+      color: #8B2500;
+    }
+
+    .currency-highlight {
+      background: #FAF7F2;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      font-size: 1.4rem;
+      color: #8B2500;
+      text-align: center;
+    }
+
+    .transport-icons {
+      display: flex;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .transport-item {
+      text-align: center;
+    }
+
+    .transport-item .icon {
+      font-size: 1.8rem;
+      background: #FAF7F2;
+      padding: 14px;
+      border-radius: 50%;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .transport-item span {
+      font-size: 0.78rem;
+      color: #6B6055;
+    }
+
+    .etiquette-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .etiquette-section img {
+      border-radius: 8px;
+      height: 340px;
+    }
+
+    .etiquette-label {
+      color: #C8922A;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .etiquette-heading {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .etiquette-list {
+      list-style: none;
+    }
+
+    .etiquette-list li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .etiquette-list li:last-child {
+      border: none;
+    }
+
+    .etiquette-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .etiquette-list h4 {
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+
+    .etiquette-list p {
+      font-size: 0.82rem;
+      color: #6B6055;
+    }
+
+    footer {
+      background: #1E1A16;
+      color: rgba(255,255,255,0.75);
+      padding: 48px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      color: #C8922A;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+
+    footer h4 {
+      color: #fff;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 8px;
+    }
+
+    footer ul a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    footer ul a:hover {
+      color: #C8922A;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 62px; left: 0; right: 0;
+        background: #FAF7F2;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid #E8E0D5;
+      }
+
+      .mobile-contact {
+        display: block;
+      }
+
+      .page-hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .prac-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .etiquette-section {
+        grid-template-columns: 1fr;
+      }
+
+      .etiquette-section img {
+        height: 220px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">ទេសចរណ៍​កម្ពុជា</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="tips&guide.html" class="active">Tips & Guide</a>
+      <a href="contact.html" class="mobile-contact">Contact Us</a>
+    </div>
+    <a class="nav-btn" href="contact.html">Contact Us</a>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <h1>ព័ត៌មានសម្រាប់ភ្ញៀវទេសចរ</h1>
+    <p>ព័ត៌មានសំខាន់ៗដែលអ្នកគួរដឹងមុន និងក្នុងអំឡុងពេលធ្វើដំណើរនៅកម្ពុជា</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="prac-grid">
+
+      <div class="prac-card">
+        <h3><i class="fas fa-passport"></i> ទិដ្ឋាការ</h3>
+        <p>
+          ភាគច្រើននៃភ្ញៀវអាចដាក់ស្នើទិដ្ឋាការ ឬប្រើ e-Visa បាន។
+          ទិដ្ឋាការទេសចរណ៍មានសុពលភាព 30 ថ្ងៃ។
+        </p>
+        <ul>
+          <li>អាចដាក់ស្នើ e-Visa តាម evisa.gov.kh</li>
+          <li>មានសេវាទិដ្ឋាការនៅព្រលានយន្តហោះ និងច្រកព្រំដែន</li>
+          <li>Passport ត្រូវមានសុពលភាពយ៉ាងហោចណាស់ 6 ខែ</li>
+        </ul>
+      </div>
+
+      <div class="prac-card sage">
+        <h3><i class="fas fa-cloud-sun"></i> អាកាសធាតុ</h3>
+
+        <p>កម្ពុជាមានអាកាសធាតុត្រូពិច និងមាន 2 រដូវចម្បង៖</p>
+
+        <div class="weather-pills">
+          <div class="weather-pill">
+            <span><i class="fas fa-sun"></i> រដូវប្រាំង (វិច្ឆិកា – មេសា)</span>
+            <strong>25°C – 35°C</strong>
+          </div>
+
+          <div class="weather-pill">
+            <span><i class="fas fa-cloud-sun-rain"></i> រដូវវស្សា (ឧសភា – តុលា)</span>
+            <strong>26°C – 38°C</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="prac-card">
+        <h3><i class="fas fa-money-bill-transfer"></i> រូបិយប័ណ្ណ និង លុយ</h3>
+
+        <p>
+          កម្ពុជាប្រើប្រាស់ទាំងប្រាក់រៀល (KHR) និងដុល្លារអាមេរិក (USD)។
+        </p>
+
+        <div class="currency-highlight">
+          <i class="fas fa-arrow-right-arrow-left"></i> 1 ដុល្លារ ≈ 4,000 រៀល
+        </div>
+
+        <p style="font-size: 0.8rem; margin-top: 10px;">
+          <i class="fas fa-building-columns"></i> មានម៉ាស៊ីន ATM ទូទាំងប្រទេស។
+          ណែនាំឲ្យប្រើ KHQR សម្រាប់ការទូទាត់ក្នុងស្រុក។
+        </p>
+      </div>
+
+      <div class="prac-card">
+        <h3><i class="fas fa-bus"></i> ការធ្វើដំណើរ</h3>
+
+        <p>មានជម្រើសធ្វើដំណើរច្រើនទូទាំងប្រទេស៖</p>
+
+        <div class="transport-icons">
+          <div class="transport-item">
+            <span class="icon"><i class="fas fa-taxi"></i></span>
+            <span>តុកតុក</span>
+          </div>
+
+          <div class="transport-item">
+            <span class="icon"><i class="fas fa-mobile-screen"></i></span>
+            <span>PassApp / Grab</span>
+          </div>
+
+          <div class="transport-item">
+            <span class="icon"><i class="fas fa-bus-simple"></i></span>
+            <span>ឡានក្រុង</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="etiquette-section">
+      <img src="images/culture.jpg" alt="វប្បធម៌ខ្មែរ">
+
+      <div>
+        <p class="etiquette-label">ការគោរព និង ប្រពៃណី</p>
+        <h2 class="etiquette-heading">អ្វីដែលអ្នកគួរដឹងមុនធ្វើដំណើរ</h2>
+
+        <ul class="etiquette-list">
+
+          <li>
+            <span class="etiquette-icon"><i class="fas fa-hands-praying"></i></span>
+            <div>
+              <h4>សំពះ (ការស្វាគមន៍)</h4>
+              <p>
+                សំពះគឺជាការស្វាគមន៍ប្រពៃណីខ្មែរ ដោយដាក់ដៃជាប់គ្នា និងឱនក្បាល។
+                ប្រើសម្រាប់ការគោរពចំពោះមនុស្សចាស់ និងព្រះសង្ឃ។
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="etiquette-icon"><i class="fas fa-shirt"></i></span>
+            <div>
+              <h4>ការស្លៀកពាក់សមរម្យ</h4>
+              <p>
+                ស្លៀកពាក់គ្របដណ្ដប់ស្មា និងជង្គង់ពេលចូលប្រាសាទ ឬទីសក្ការៈ។
+                ដោះស្បែកជើងមុនចូលវត្ត ឬផ្ទះ។
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span class="etiquette-icon"><i class="fas fa-volume-xmark"></i></span>
+            <div>
+              <h4>នៅពេលទស្សនាប្រាសាទ</h4>
+              <p>
+                រក្សាភាពស្ងប់ស្ងាត់ ជៀសវាងការចង្អុលទៅរូបសក្ការៈ និងកុំប៉ះវត្ថុបរិសុទ្ធ។
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">ទេសចរណ៍កម្ពុជា</div>
+        <p>
+          មគ្គុទ្ទេសក៍ទេសចរណ៍ដ៏ទុកចិត្តបាន សម្រាប់ស្វែងយល់ពីវប្បធម៌
+          ប្រវត្តិសាស្ត្រ និងសម្រស់ធម្មជាតិរបស់កម្ពុជា។
+        </p>
+      </div>
+
+      <div>
+        <h4>គោលដៅពេញនិយម</h4>
+        <ul>
+          <li><a href="destinations.html">សៀមរាប</a></li>
+          <li><a href="destinations.html">ភ្នំពេញ</a></li>
+          <li><a href="destinations.html">កោះរ៉ុង</a></li>
+          <li><a href="destinations.html">កំពត</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ព័ត៌មានធ្វើដំណើរ</h4>
+        <ul>
+          <li><a href="practical.html">ទិដ្ឋាការ</a></li>
+          <li><a href="practical.html">អាកាសធាតុ</a></li>
+          <li><a href="practical.html">ការធ្វើដំណើរ</a></li>
+          <li><a href="practical.html">គន្លឹះសម្រាប់ភ្ញៀវទេសចរ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ទំនាក់ទំនង</h4>
+        <ul>
+          <li><a href="mailto:info@cambodiatravel.com">info@cambodiatravel.com</a></li>
+          <li><a href="tel:+85512345678">+855 12 345 678</a></li>
+          <li>ភ្នំពេញ ប្រទេសកម្ពុជា</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ទេសចរណ៍កម្ពុជា</p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

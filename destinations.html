@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Serif Khmer", serif;
+      background: #FAF7F2;
+      color: #1E1A16;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.97);
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      color: #8B2500;
+      font-weight: 700;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      color: #6B6055;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #8B2500;
+    }
+
+    .nav-links a.active {
+      color: #8B2500;
+      border-bottom: 2px solid #8B2500;
+      padding-bottom: 2px;
+    }
+
+    .nav-btn {
+      background: #8B2500;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .mobile-contact {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1E1A16;
+      border-radius: 2px;
+    }
+    .page-hero {
+      position: relative;
+      height: 300px;
+      margin-top: 62px;
+      display: flex;
+      align-items: center;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url("images/sculpture.jpeg") center / cover;
+    }
+
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero h1 {
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: #8B2500;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: #6B6055;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .filter-btn {
+      border: 2px solid #E8E0D5;
+      background: #fff;
+      color: #6B6055;
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: "Noto Serif Khmer", serif;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: #8B2500;
+      background: #8B2500;
+      color: #fff;
+    }
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .dest-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: block;
+    }
+
+    .dest-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .dest-card img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .dest-info {
+      padding: 18px;
+    }
+
+    .dest-info .tag {
+      font-size: 0.75rem;
+      color: #C8922A;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .dest-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      color: #1E1A16;
+    }
+
+    .dest-info p {
+      font-size: 0.85rem;
+      color: #6B6055;
+      margin-bottom: 12px;
+    }
+
+    .dest-info .read-more {
+      color: #8B2500;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    footer {
+      background: #1E1A16;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 48px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      color: #C8922A;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+
+    footer h4 {
+      color: #fff;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 8px;
+    }
+
+    footer ul a {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.65);
+      transition: color 0.2s;
+    }
+
+    footer ul a:hover {
+      color: #C8922A;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .nav-links,
+      .nav-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: #FAF7F2;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid #E8E0D5;
+      }
+
+      .mobile-contact {
+        display: block;
+      }
+
+      .page-hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .dest-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">ទេសចរណ៍​កម្ពុជា</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="destinations.html" class="active">Destinations</a>
+      <a href="tips&guide.html">Tips & Guide</a>
+      <a href="contact.html" class="mobile-contact">Contact Us</a>
+    </div>
+    <a class="nav-btn" href="contact.html">Contact Us</a>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <h1>ដំណើរកម្សាន្តរបស់អ្នកចាប់ផ្ដើមនៅទីនេះ</h1>
+    <p>ស្វែងរកគោលដៅដ៏ល្អបំផុតសម្រាប់ការផ្សងព្រេងរបស់អ្នក</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filter(this, 'all')">ទាំងអស់</button>
+      <button class="filter-btn" onclick="filter(this, 'history')">ប្រវត្តិ & ប្រាសាទ</button>
+      <button class="filter-btn" onclick="filter(this, 'beach')">ឆ្នេរ & កោះ</button>
+      <button class="filter-btn" onclick="filter(this, 'nature')">ធម្មជាតិ</button>
+      <button class="filter-btn" onclick="filter(this, 'city')">ទីក្រុង</button>
+    </div>
+
+    <div class="dest-grid" id="destGrid">
+
+      <a href="siemreap.html" class="dest-card" data-cat="history">
+        <img src="images/sculpture.jpeg" alt="សៀមរាប">
+        <div class="dest-info">
+          <h3>សៀមរាប</h3>
+          <p>ខេត្តដ៏ល្បីល្បាញដែលជាទីតាំងនៃប្រាសាទអង្គរវត្ត និងប្រាសាទបុរាណជាច្រើន ព្រមទាំងមានផ្សាររាត្រី និងវប្បធម៌ដ៏សម្បូរបែប</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="phnompenh.html" class="dest-card" data-cat="city">
+        <img src="images/phnompenh.jpg" alt="ភ្នំពេញ">
+        <div class="dest-info">
+          <h3>ភ្នំពេញ</h3>
+          <p>រាជធានីនៃប្រទេសកម្ពុជា ដែលរួមបញ្ចូលទាំងប្រវត្តិសាស្ត្រ វប្បធម៌ និងការអភិវឌ្ឍទំនើប</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="sihanoukville.html" class="dest-card" data-cat="city beach">
+        <img src="images/kps.jpg" alt="ព្រះសីហនុ">
+        <div class="dest-info">
+          <h3>ព្រះសីហនុ</h3>
+          <p>ខេត្តជាប់មាត់សមុទ្រ ដែលជាច្រកសំខាន់ទៅកាន់កោះនានា និងមានឆ្នេរស្រស់ស្អាតជាច្រើន</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="kampot.html" class="dest-card" data-cat="nature city">
+        <img src="images/kampot.jpg" alt="កំពត">
+        <div class="dest-info">
+          <h3>កំពត</h3>
+          <p>ខេត្តស្ងប់ស្ងាត់ជាប់ដងទន្លេ និងទេសភាពធម្មជាតិដ៏ទាក់ទាញ</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="battambong.html" class="dest-card" data-cat="nature city">
+        <img src="images/btb.jpg" alt="បាត់ដំបង">
+        <div class="dest-info">
+          <h3>បាត់ដំបង</h3>
+          <p>ខេត្តដែលសម្បូរទៅដោយសិល្បៈ វប្បធម៌ និងស្ថាបត្យកម្មបុរាណ</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="kep.html" class="dest-card" data-cat="beach nature">
+        <img src="images/kep.jpg" alt="កែប">
+        <div class="dest-info">
+          <h3>កែប</h3>
+          <p>ឆ្នេរសមុទ្រដ៏ស្ងប់ស្ងាត់ ល្បីដោយក្តាមស្រស់ និងអាហារសមុទ្រដ៏ឈ្ងុយឆ្ងាញ់</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="kohkong.html" class="dest-card" data-cat="nature">
+        <img src="images/kohkong.jpg" alt="កោះកុង">
+        <div class="dest-info">
+          <h3>កោះកុង</h3>
+          <p>ខេត្តដែលសម្បូរទៅដោយធនធានធម្មជាតិ ព្រៃកោងកាង ទឹកជ្រោះ និងតំបន់អេកូទេសចរណ៍ជាច្រើន</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+      <a href="mondulkiri.html" class="dest-card" data-cat="nature">
+        <img src="images/md.jpg" alt="មណ្ឌលគិរី">
+        <div class="dest-info">
+          <h3>មណ្ឌលគិរី</h3>
+          <p>ខេត្តដែលមានអាកាសធាតុត្រជាក់ពេញមួយឆ្នាំ មានទឹកជ្រោះ ទេសភាពធម្មជាតិ និងជម្រកដំរី</p>
+          <span class="read-more">រុករក →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">ទេសចរណ៍កម្ពុជា</div>
+        <p>មគ្គុទ្ទេសក៍ទេសចរណ៍ដ៏ទុកចិត្តបាន សម្រាប់ស្វែងយល់ពីវប្បធម៌ ប្រវត្តិសាស្ត្រ និងសម្រស់ធម្មជាតិរបស់កម្ពុជា។</p>
+      </div>
+
+      <div>
+        <h4>គោលដៅពេញនិយម</h4>
+        <ul>
+          <li><a href="destinations.html">សៀមរាប</a></li>
+          <li><a href="destinations.html">ភ្នំពេញ</a></li>
+          <li><a href="destinations.html">កោះរ៉ុង</a></li>
+          <li><a href="destinations.html">កំពត</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ព័ត៌មានធ្វើដំណើរ</h4>
+        <ul>
+          <li><a href="practical.html">ទិដ្ឋាការ</a></li>
+          <li><a href="practical.html">អាកាសធាតុ</a></li>
+          <li><a href="practical.html">ការធ្វើដំណើរ</a></li>
+          <li><a href="practical.html">គន្លឹះសម្រាប់ភ្ញៀវទេសចរ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ទំនាក់ទំនង</h4>
+        <ul>
+          <li><a href="mailto:info@cambodiatravel.com">info@cambodiatravel.com</a></li>
+          <li><a href="tel:+85512345678">+855 12 345 678</a></li>
+          <li>ភ្នំពេញ ប្រទេសកម្ពុជា</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ទេសចរណ៍កម្ពុជា</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  function filter(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+
+    document.querySelectorAll('.dest-card').forEach(function(card) {
+      if (cat === 'all' || card.dataset.cat.includes(cat)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

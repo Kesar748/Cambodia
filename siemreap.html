@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>សៀមរាប — ទេសចរណ៍កម្ពុជា</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Serif Khmer", serif;
+      background: #FAF7F2;
+      color: #1E1A16;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.97);
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      color: #8B2500;
+      font-weight: 700;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      color: #6B6055;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #8B2500;
+    }
+
+    .nav-links a.active {
+      color: #8B2500;
+      border-bottom: 2px solid #8B2500;
+      padding-bottom: 2px;
+    }
+
+    .nav-btn {
+      background: #8B2500;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .mobile-contact {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1E1A16;
+      border-radius: 2px;
+    }
+
+    .detail-hero {
+      position: relative;
+      height: 420px;
+      margin-top: 62px;
+    }
+
+    .detail-hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/siemreap.jpg') center / cover;
+    }
+
+    .detail-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3));
+    }
+
+    .detail-hero-content {
+      position: absolute;
+      bottom: 40px; left: 0; right: 0;
+    }
+
+    .detail-hero-content h1 {
+      color: #fff;
+      font-size: 2.6rem;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: #8B2500;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: #6B6055;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .info-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .info-card-val {
+      font-size: 1rem;
+      color: #8B2500;
+      font-weight: 700;
+    }
+
+    .info-card-lbl {
+      font-size: 0.78rem;
+      color: #6B6055;
+    }
+
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .attr-card {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .attr-card img {
+      height: 200px;
+    }
+
+    .attr-card:first-child {
+      grid-row: span 2;
+    }
+
+    .attr-card:first-child img {
+      height: 100%;
+      min-height: 416px;
+    }
+
+    .attr-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 40%, transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    .attr-overlay h3 {
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .attr-overlay p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .attr-overlay a {
+      color: #C8922A;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .season-section {
+      background: #EEF2EE;
+      padding: 64px 0;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .season-box {
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .season-box.dry {
+      background: rgba(200,146,42,0.13);
+    }
+
+    .season-box.wet {
+      background: rgba(255,255,255,0.7);
+      margin-bottom: 0;
+    }
+
+    .season-box strong {
+      color: #1E1A16;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .season-box p {
+      font-size: 0.85rem;
+      color: #6B6055;
+    }
+
+    .season-grid img {
+      border-radius: 8px;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .tip-card {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .tip-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .tip-card h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .tip-card p {
+      font-size: 0.85rem;
+      color: #6B6055;
+    }
+
+    footer {
+      background: #1E1A16;
+      color: rgba(255,255,255,0.75);
+      padding: 48px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      color: #C8922A;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+
+    footer h4 {
+      color: #fff;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 8px;
+    }
+
+    footer ul a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    footer ul a:hover {
+      color: #C8922A;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 62px; left: 0; right: 0;
+        background: #FAF7F2;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid #E8E0D5;
+      }
+
+      .mobile-contact {
+        display: block;
+      }
+
+      .detail-hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .info-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .attractions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .attr-card:first-child {
+        grid-row: auto;
+      }
+
+      .attr-card:first-child img {
+        min-height: unset;
+        height: 220px;
+      }
+
+      .season-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">ទេសចរណ៍​កម្ពុជា</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="destinations.html" class="active">Destinations</a>
+      <a href="tips&guide.html">Tips & Guide</a>
+      <a href="contact.html" class="mobile-contact">Contact Us</a>
+    </div>
+    <a class="nav-btn" href="contact.html">Contact Us</a>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="detail-hero">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-overlay"></div>
+  <div class="container detail-hero-content">
+    <h1>សៀមរាប</h1>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="info-cards">
+
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-temperature-high"></i></div>
+        <div class="info-card-val">25°C – 35°C</div>
+        <div class="info-card-lbl">សីតុណ្ហភាព</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-plane-departure"></i></div>
+        <div class="info-card-val">វិច្ឆិកា – មេសា</div>
+        <div class="info-card-lbl">រដូវកាលល្អបំផុត</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-money-bill-transfer"></i></div>
+        <div class="info-card-val">ដុល្លារ / រៀល</div>
+        <div class="info-card-lbl">រូបិយប័ណ្ណ</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-language"></i></div>
+        <div class="info-card-val">ខ្មែរ / អង់គ្លេស</div>
+        <div class="info-card-lbl">ភាសា</div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">ទីកន្លែងទេសចរណ៍សំខាន់ៗ</h2>
+    <p class="section-sub">កន្លែងណែនាំសម្រាប់ដំណើរទេសចរណ៍នៅសៀមរាប</p>
+
+    <div class="attractions-grid">
+
+      <div class="attr-card">
+        <img src="images/angkorwat.png" alt="អង្គរវត្ត">
+        <div class="attr-overlay">
+          <h3>អង្គរវត្ត</h3>
+          <p>បេតិកភណ្ឌពិភពលោក និងសំណង់សាសនាដ៏ធំបំផុត</p>
+          <a href="#">ស្វែងយល់បន្ថែម →</a>
+        </div>
+      </div>
+
+      <div class="attr-card">
+        <img src="images/bayon.jpg" alt="ប្រាសាទបាយ័ន">
+        <div class="attr-overlay">
+          <h3>ប្រាសាទបាយ័ន</h3>
+          <p>ល្បីដោយរូបចម្លាក់មុខថ្មដ៏អស្ចារ្យ</p>
+        </div>
+      </div>
+
+      <div class="attr-card">
+        <img src="images/river.jpg" alt="បឹងទន្លេសាប">
+        <div class="attr-overlay">
+          <h3>បឹងទន្លេសាប</h3>
+          <p>បឹងទឹកសាបធំបំផុតក្នុងតំបន់អាស៊ីអាគ្នេយ៍</p>
+        </div>
+      </div>
+
+      <div class="attr-card">
+        <img src="images/pubstreet.jpg" alt="ផាប់ស្ត្រីត">
+        <div class="attr-overlay">
+          <h3>ផាប់ស្ត្រីត</h3>
+          <p>ជីវិតយប់ ម្ហូប street food និងការទិញរបស់</p>
+        </div>
+      </div>
+
+      <div class="attr-card">
+        <img src="images/kulen.jpg" alt="ភ្នំគូលេន">
+        <div class="attr-overlay">
+          <h3>ភ្នំគូលេន</h3>
+          <p>ទីកំណើតអរិយធម៌អង្គរ និងទឹកធ្លាក់ធម្មជាតិ</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="season-section">
+  <div class="container">
+    <h2 class="section-title">ពេលវេលាល្អបំផុតសម្រាប់ទស្សនកិច្ច</h2>
+
+    <div class="season-grid">
+      <div>
+        <div class="season-box dry">
+          <strong><i class="fas fa-sun"></i> រដូវប្រាំង (វិច្ឆិកា – មេសា)</strong>
+          <p>  លក្ខខណ្ឌអាកាសធាតុល្អសម្រាប់ទស្សនាប្រាសាទ និងដំណើរកម្សាន្ត។
+            អាកាសធាតុស្ងួត និងមានព្រឹត្តិការណ៍បុណ្យចូលឆ្នាំខ្មែរ។</p>
+        </div>
+
+        <div class="season-box wet">
+          <strong><i class="fas fa-cloud-rain"></i> រដូវវស្សា (ឧសភា – តុលា)</strong>
+          <p>ទេសភាពបៃតងស្រស់ស្អាត ភ្ញៀវតិចជាងរដូវប្រាំង។
+            ភ្លៀងមិនសូវខ្លាំង និងបឹងទន្លេសាបមានទឹកពេញ។</p>
+        </div>
+      </div>
+
+      <img src="images/tree.jpg" alt="ទេសភាពស្រែ">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <h2 class="section-title">គន្លឹះសម្រាប់ដំណើរទេសចរណ៍</h2>
+    <p class="section-sub">អ្វីដែលភ្ញៀវទេសចរគ្រប់រូបត្រូវដឹង</p>
+
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-shirt"></i></div>
+        <h4>ការស្លៀកពាក់</h4>
+        <p>ស្លៀកពាក់ឲ្យគ្របដណ្ដប់ស្មា និងជង្គង់ពេលចូលប្រាសាទ</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-clock"></i></div>
+        <h4>ពេលវេលាល្អបំផុត</h4>
+        <p>មកអង្គរវត្តមុនព្រះអាទិត្យរះ ដើម្បីទទួលបានទេសភាពស្រស់ និងភ្ញៀវតិច</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-taxi"></i></div>
+        <h4>ការធ្វើដំណើរ</h4>
+        <p>ជួលតុកតុកមួយថ្ងៃ (~15–20 ដុល្លារ) សម្រាប់ដំណើរទស្សនាប្រាសាទ</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-bottle-water"></i></div>
+        <h4>ផឹកទឹកច្រើន</h4>
+        <p>អាកាសធាតុក្តៅ សូមផឹកទឹកគ្រប់គ្រាន់ និងសម្រាកក្រោមម្លប់</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-ticket"></i></div>
+        <h4>សំបុត្រប្រាសាទ</h4>
+        <p>ទិញ Angkor Pass ($37/ថ្ងៃ, $62/3ថ្ងៃ, $72/7ថ្ងៃ) នៅការិយាល័យផ្លូវការ។</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon"><i class="fas fa-utensils"></i></div>
+        <h4>ម្ហូបក្នុងស្រុក</h4>
+        <p>សាកល្បងម្ហូបខ្មែរ ដូចជា អាម៉ូក ឡុកឡាក់ និង spring roll នៅជុំវិញផ្សារចាស់</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">ទេសចរណ៍កម្ពុជា</div>
+        <p>
+          មគ្គុទ្ទេសក៍ទេសចរណ៍ដ៏ទុកចិត្តបាន សម្រាប់ស្វែងយល់ពីវប្បធម៌
+          ប្រវត្តិសាស្ត្រ និងសម្រស់ធម្មជាតិរបស់កម្ពុជា។
+        </p>
+      </div>
+
+      <div>
+        <h4>គោលដៅពេញនិយម</h4>
+        <ul>
+          <li><a href="destinations.html">សៀមរាប</a></li>
+          <li><a href="destinations.html">ភ្នំពេញ</a></li>
+          <li><a href="destinations.html">កោះរ៉ុង</a></li>
+          <li><a href="destinations.html">កំពត</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ព័ត៌មានធ្វើដំណើរ</h4>
+        <ul>
+          <li><a href="practical.html">ទិដ្ឋាការ</a></li>
+          <li><a href="practical.html">អាកាសធាតុ</a></li>
+          <li><a href="practical.html">ការធ្វើដំណើរ</a></li>
+          <li><a href="practical.html">គន្លឹះសម្រាប់ភ្ញៀវទេសចរ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ទំនាក់ទំនង</h4>
+        <ul>
+          <li><a href="mailto:info@cambodiatravel.com">info@cambodiatravel.com</a></li>
+          <li><a href="tel:+85512345678">+855 12 345 678</a></li>
+          <li>ភ្នំពេញ ប្រទេសកម្ពុជា</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ទេសចរណ៍កម្ពុជា</p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

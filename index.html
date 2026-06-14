@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    body {
+      font-family: "Noto Serif Khmer", serif;
+      background: #FAF7F2;
+      color: #1E1A16;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+    }
+    img { 
+      display: block;
+      width: 100%; 
+      object-fit: cover; 
+    }
+
+    .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.97);
+      border-bottom: 1px solid #E8E0D5;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 32px;
+    }
+
+    .nav-logo { 
+      font-size: 1.2rem; 
+      color: #8B2500; 
+      font-weight: 700; 
+      margin-right: auto; 
+    }
+    .nav-links { 
+      display: flex; 
+      gap: 28px; 
+    }
+    .nav-links a { 
+      font-size: 0.88rem; 
+      color: #6B6055; 
+      transition: color 0.2s; 
+    }
+    .nav-links a:hover { 
+      color: #8B2500; 
+    }
+    .nav-links a.active { 
+      color: #8B2500; 
+      border-bottom: 2px solid #8B2500; 
+      padding-bottom: 2px; 
+    }
+
+    .nav-btn {
+      background: #8B2500;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+.mobile-contact {
+  display: none;
+}
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span { 
+      display: block; 
+      width: 22px; 
+      height: 2px; 
+      background: #1E1A16; 
+      border-radius: 2px; 
+    }
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      margin-top: 62px;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/angkorwat.png') center / cover;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:linear-gradient(to top, rgba(0,0,0,0.7) 10%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 56px 0;
+    }
+
+    .hero-content h1 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 12px;
+      max-width: 620px;
+    }
+
+    .hero-content p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+    .search-wrap {
+      position: relative;
+      max-width: 480px;
+    }
+
+    .search-box {
+      display: flex;
+      background: #fff;
+      border-radius: 6px;
+      overflow: visible;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 13px 16px;
+      font-size: 0.95rem;
+      font-family: "Noto Serif Khmer", serif;
+      border-radius: 6px 0 0 6px;
+      background: #fff;
+    }
+
+    .search-box button {
+      background: #8B2500;
+      border: none;
+      color: #fff;
+      padding: 13px 22px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: "Noto Serif Khmer", serif;
+      border-radius: 0 6px 6px 0;
+    }
+    .kh-section {
+  padding: 64px 0;
+  background: #FAF7F2;
+  }
+
+.kh-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.kh-stat {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #E8E0D5;
+}
+
+.kh-stat .val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8B2500;
+}
+
+.kh-stat .lbl {
+  font-size: 0.8rem;
+  color: #6B6055;
+  margin-top: 4px;
+}
+
+.kh-map-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #E8E0D5;
+
+  overflow: hidden;
+}
+
+.kh-map-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.kh-map-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.kh-info-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #8B2500;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-left: 4px;
+}
+
+.kh-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0 0 24px;
+}
+
+.kh-info p {
+  font-size: 0.95rem;
+  color: #6B6055;
+  line-height: 1.9;
+  margin: 0;
+}
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      z-index: 200;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .suggestions.open { 
+      display: block;
+     }
+
+    .suggestion-item {
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #1E1A16;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s;
+    }
+
+    .suggestion-item:hover { 
+      background: #FAF7F2; 
+    }
+    .suggestion-item .s-icon { 
+      font-size: 1rem; 
+    }
+    .suggestion-item .s-name { 
+      font-weight: 600; 
+    }
+    .suggestion-item .s-tag { 
+      font-size: 0.75rem; 
+      color: #6B6055; 
+    }
+    .section { 
+      padding: 64px 0; 
+    }
+    .section-title { 
+      font-size: 1.9rem; 
+      color: #8B2500; 
+      margin-bottom: 8px; 
+    }
+    .section-sub { 
+      color: #6B6055; 
+      margin-bottom: 36px; 
+      font-size: 0.95rem; 
+    }
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .dest-card {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      height: 220px;
+      transition: transform 0.25s;
+      display: block;
+    }
+
+    .dest-card:hover { 
+      transform: translateY(-4px); 
+    }
+    .dest-card img { 
+      height: 100%; 
+    }
+
+    .dest-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 10%, transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+    }
+
+    .dest-card-overlay h3 { 
+      color: #fff; 
+      font-size: 1.1rem; 
+      margin-bottom: 4px; }
+    .dest-card-overlay p { 
+      color: rgba(255,255,255,0.8); 
+      font-size: 0.8rem; 
+      margin-bottom: 10px; }
+    .dest-card-link { 
+      color: #C8922A; 
+      font-size: 0.8rem; 
+      font-weight: 700; 
+    }
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.exp-card {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.exp-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+    .exp-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 10%, transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+    }
+
+    .exp-overlay h3 { 
+      color: #fff; font-size: 1.05rem; }
+    .exp-overlay p { 
+      color: rgba(255,255,255,0.75); 
+      font-size: 0.8rem; 
+      margin-top: 4px; }
+    .cta-band { 
+      background: #4A5E4A; 
+      padding: 56px 0; 
+      text-align: center; 
+    }
+    .cta-band h2 { 
+      color: #fff; 
+      font-size: 1.8rem; 
+      margin-bottom: 10px; 
+    }
+    .cta-band p { 
+      color: rgba(255,255,255,0.8); 
+      margin-bottom: 28px; 
+    }
+    .btn-row { 
+      display: flex; 
+      gap: 14px; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      font-family: "Noto Serif Khmer", serif;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      border: none;
+    }
+
+    .btn:hover { 
+      opacity: 0.85;
+     }
+    .btn-gold { 
+      background: #C8922A; 
+      color: #fff; 
+    }
+    .btn-outline { 
+      background: transparent; 
+      border: 2px solid #fff; 
+      color: #fff; 
+    }
+    footer { 
+      background: #1E1A16; 
+      color: rgba(255,255,255,0.75); 
+      padding: 48px 0 28px; 
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .footer-logo { 
+      font-size: 1.2rem; 
+      color: #C8922A; 
+      margin-bottom: 10px; 
+      font-weight: 700; 
+    }
+    .footer-socials a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-socials a:hover {
+    color: #ffd700;
+}
+    .footer-brand p { 
+      font-size: 0.85rem; 
+      max-width: 200px; 
+    }
+    footer h4 { 
+      color: #fff; 
+      margin-bottom: 14px; 
+      font-size: 0.95rem; 
+    }
+    footer ul { 
+      list-style: none; 
+    }
+    footer ul li { 
+      margin-bottom: 8px; 
+    }
+    footer ul a { 
+      font-size: 0.85rem; 
+      color: rgba(255,255,255,0.65); 
+      transition: color 0.2s; 
+    }
+    footer ul a:hover { 
+      color: #C8922A; 
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom p { 
+      font-size: 0.8rem; 
+    }
+    .footer-socials {
+       display: flex; 
+       gap: 14px; 
+       font-size: 1.2rem; 
+      }
+    @media (max-width: 768px) {
+      .nav-links, .nav-btn { 
+        display: none; 
+      }
+      .hamburger { 
+        display: flex;
+       }
+       .exp-grid {
+    grid-template-columns: 1fr;
+       }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 62px; left: 0; right: 0;
+        background: #FAF7F2;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid #E8E0D5;
+      }
+
+      .hero-content h1 { 
+        font-size: 1.7rem;
+       }
+       .kh-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kh-map-row {
+    grid-template-columns: 1fr;
+  }
+      .dest-grid { 
+        grid-template-columns: 1fr; 
+      }
+
+      .exp-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px 220px;
+      }
+        .exp-overlay p {
+    display: none;
+  }
+
+  .exp-overlay h3 {
+    font-size: 1.1rem;
+  }
+  .mobile-contact {
+    display: block;
+  }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr; 
+      }
+      .section-title { 
+        font-size: 1.5rem; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">ទេសចរណ៍​កម្ពុជា</div>
+  <div class="nav-links" id="navLinks">
+  <a href="index.html" class="active">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="tips&guide.html">Tips & Guide</a>
+  <a href="contact.html" class="mobile-contact">Contact Us</a>
+</div>
+<a class="nav-btn" href="contact.html">Contact Us</a>
+<button class="hamburger" onclick="toggleMenu()">
+  <span></span><span></span><span></span>
+</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1>ស្វាគមន៍មកកាន់ទេសចរណ៍កម្ពុជា</h1>
+    <p>ស្វែងយល់ពីប្រវត្តិសាស្ត្រ វប្បធម៌ និងសម្រស់ធម្មជាតិដ៏អស្ចារ្យ</p>
+    <div class="search-wrap">
+      <div class="search-box">
+        <input type="text" placeholder="ស្វែងរកន្លែងទេសចរណ៍..." id="searchInput" autocomplete="off">
+        <button onclick="handleSearch()">ស្វែងរក</button>
+      </div>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+  </div>
+</section>
+<section class="kh-section">
+  <div class="container">
+    <div class="kh-stats">
+      <div class="kh-stat">
+        <div class="val">181,035</div>
+        <div class="lbl">ផ្ទៃដី km²</div>
+      </div>
+      <div class="kh-stat">
+        <div class="val">17M+</div>
+        <div class="lbl">ប្រជាជន</div>
+      </div>
+      <div class="kh-stat">
+        <div class="val">25</div>
+        <div class="lbl">ខេត្ត-ក្រុង</div>
+      </div>
+      <div class="kh-stat">
+        <div class="val">6M+</div>
+        <div class="lbl">ភ្ញៀវទេសចរ/ឆ្នាំ</div>
+      </div>
+    </div>
+
+    <div class="kh-map-row">
+
+      <div class="kh-map-box">
+      <div class="kh-map-box">
+  <img src="images/map.jpg" alt="ផែនទីកម្ពុជា" style="width:100%; border-radius:8px; object-fit:cover;">
+</div>
+      </div>
+
+<div class="kh-info">
+  <h3 class="kh-info-title">អំពីព្រះរាជាណាចក្រកម្ពុជា</h3>
+
+  <p>ព្រះរាជាណាចក្រកម្ពុជា ជាប្រទេសមួយស្ថិតនៅតំបន់អាស៊ីអាគ្នេយ៍ ដែលមានអរិយធម៌ និងប្រវត្តិសាស្ត្រដ៏រុងរឿង ជាពិសេសមរតកអង្គរ ដែលត្រូវបានចុះបញ្ជីជាបេតិកភណ្ឌពិភពលោកដោយអង្គការ UNESCO។</p>
+
+  <p>កម្ពុជាមានប្រជាជនជាង ១៧ លាននាក់​។រាជធានីភ្នំពេញ គឺជាមជ្ឈមណ្ឌលសំខាន់ផ្នែកនយោបាយ សេដ្ឋកិច្ច វប្បធម៌ និងពាណិជ្ជកម្មរបស់ប្រទេស។</p>
+
+  <p>ប្រទេសនេះសម្បូរទៅដោយធនធានធម្មជាតិ និងទេសភាពដ៏ស្រស់ត្រកាល រួមមានឆ្នេរសមុទ្រ ព្រៃភ្នំ ទឹកជ្រោះ និងបឹងទន្លេសាប ដែលជាបឹងទឹកសាបធំជាងគេនៅតំបន់អាស៊ីអាគ្នេយ៍។</p>
+
+  <p>វប្បធម៌ខ្មែរ មានភាពសម្បូរបែប និងអត្តសញ្ញាណពិសេស តាមរយៈរបាំប្រពៃណី ស្ថាបត្យកម្ម ពិធីបុណ្យជាតិ និងសិល្បៈបុរាណ ដែលត្រូវបានអភិរក្ស និងបន្តអភិវឌ្ឍរហូតមកដល់បច្ចុប្បន្ន។</p>
+</div>
+
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">គោលដៅទេសចរណ៍</h2>
+    <p class="section-sub">កន្លែងទេសចរណ៍ដ៏ពេញនិយម</p>
+    <div class="dest-grid">
+      <a href="siemreap.html" class="dest-card">
+        <img src="images/siemreap.jpg" alt="សៀមរាប">
+        <div class="dest-card-overlay">
+          <h3>សៀមរាប</h3>
+          <p>ប្រវត្តិសាស្ត្រ និងប្រាសាទបុរាណ</p>
+          <span class="dest-card-link">រុករក →</span>
+        </div>
+      </a>
+      <a href="kohrong.html" class="dest-card">
+        <img src="images/kohrong.jpg" alt="កោះ រ៉ុង">
+        <div class="dest-card-overlay">
+          <h3>កោះ រ៉ុង</h3>
+          <p>ឆ្នេរខ្សាច់ដ៏ស្រស់ស្អាត </p>
+          <span class="dest-card-link">រុករក →</span>
+        </div>
+      </a>
+      <a href="phnompenh.html" class="dest-card">
+        <img src="images/phnompenh.jpg" alt="ភ្នំពេញ">
+        <div class="dest-card-overlay">
+          <h3>ភ្នំពេញ</h3>
+          <p>រាជធានីនៃវប្បធម៌ និងការអភិវឌ្ឍន៍</p>
+          <span class="dest-card-link">រុករក →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: #fff;">
+  <div class="container">
+    <h2 class="section-title">បទពិសោធន៍ដ៏ពិសេស</h2>
+    <p class="section-sub">ស្វែងយល់ពីអ្វីដែលធ្វើឱ្យប្រទេសកម្ពុជាមិនអាចភ្លេចបាន</p>
+    <div class="exp-grid">
+      <!-- Food — left -->
+      <div class="exp-card">
+        <img src="images/amok.jpg" alt="អាហារខ្មែរ">
+        <div class="exp-overlay">
+          <h3>សាកល្បងម្ហូបខ្មែរ</h3>
+          <p>ភ្លក់រសជាតិម្ហូបខ្មែរ ដូចជា អាម៉ុកត្រី, ការីខ្មែរ និង នំបញ្ចុក ដែលបង្ហាញពីវប្បធម៌ និងរសជាតិដ៏ពិសេសរបស់ប្រទេសកម្ពុជា</p>
+        </div>
+      </div>
+      <!-- Nature — right -->
+      <div class="exp-card">
+        <img src="images/culture.jpg" alt="ធម្មជាតិ">
+        <div class="exp-overlay">
+          <h3>ស្វែងយល់ពីវប្បធម៌ និងពិធីបុណ្យខ្មែរ</h3>
+          <p>ចូលរួមក្នុងពិធីបុណ្យផ្សេងៗ ដូចជា បុណ្យចូលឆ្នាំខ្មែរ ឬ បុណ្យអុំទូក ដើម្បីទទួលបានបទពិសោធន៍ពី របាំប្រពៃណី និងទំនៀមទម្លាប់ខ្មែរ</p>
+        </div>
+      </div>
+       <div class="exp-card">
+        <img src="images/beach.webp" alt="ធម្មជាតិ">
+        <div class="exp-overlay">
+          <h3>សម្រាកលំហែកាយនៅកោះ និងឆ្នេរសមុទ្រ</h3>
+          <p>ទស្សនាកន្លែងដ៏ស្រស់ស្អាត ដូចជា កោះរ៉ុង និង កោះរ៉ុងសន្លឹម ដែលមានទឹកសមុទ្រថ្លា ឆ្នេរខ្សាច់ស និងទេសភាពថ្ងៃលិចដ៏អស្ចារ្យ</p>
+        </div>
+      </div>
+       <div class="exp-card">
+        <img src="images/kulen.jpg" alt="ធម្មជាតិ">
+        <div class="exp-overlay">
+          <h3>ស្វែងយល់ពីជីវចម្រុះ និងទេសភាពធម្មជាតិដ៏អស្ចារ្យ</h3>
+          <p>ទស្សនា បឹងទន្លេសាប មើលភូមិបណ្ដែតទឹក និងជីវចម្រុះសម្បូរបែប ឬកម្សាន្តនៅ ភ្នំគូលែន រីករាយជាមួយទឹកជ្រោះ ព្រៃឈើ និងទេសភាពធម្មជាតិដ៏ស្រស់ស្អាត</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container">
+    <h2>ត្រៀមខ្លួនសម្រាប់ដំណើរកម្សាន្តទៅកម្ពុជា?</h2>
+    <p>ស្វែងរកគោលដៅទេសចរណ៍ ព័ត៌មានធ្វើដំណើរ និងគន្លឹះ…</p>
+    <div class="btn-row">
+      <a href="destinations.html" class="btn btn-gold">ស្វែងរកគោលដៅ</a>
+      <a href="tips&guide.html" class="btn btn-outline">ព័ត៌មានបន្ថែម</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">ទេសចរណ៍កម្ពុជា</div>
+        <p>
+          មគ្គុទ្ទេសក៍ទេសចរណ៍ដែរអ្នកអាចទុកចិត្តបាន សម្រាប់ស្វែងយល់ពីវប្បធម៌
+          ប្រវត្តិសាស្ត្រ និងសម្រស់ធម្មជាតិរបស់កម្ពុជា។
+        </p>
+      </div>
+
+      <div>
+        <h4>គោលដៅពេញនិយម</h4>
+        <ul>
+          <li><a href="destinations.html">សៀមរាប</a></li>
+          <li><a href="destinations.html">ភ្នំពេញ</a></li>
+          <li><a href="destinations.html">កោះរ៉ុង</a></li>
+          <li><a href="destinations.html">កំពត</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ព័ត៌មានធ្វើដំណើរ</h4>
+        <ul>
+          <li><a href="tips&guide.html">ទិដ្ឋាការ</a></li>
+          <li><a href="tips&guide.html">អាកាសធាតុ</a></li>
+          <li><a href="tips&guide.html">ការធ្វើដំណើរ</a></li>
+          <li><a href="tips&guide.html">គន្លឹះសម្រាប់ភ្ញៀវទេសចរ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ទំនាក់ទំនង</h4>
+        <ul>
+          <li><a href="mailto:info@cambodiatravel.com">info@cambodiatravel.com</a></li>
+          <li><a href="tel:+85512345678">+855 12 345 678</a></li>
+          <li>ភ្នំពេញ ប្រទេសកម្ពុជា</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ទេសចរណ៍កម្ពុជា</p>
+
+    <div class="footer-socials">
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var provinces = [
+    { name: "ភ្នំពេញ", en: "Phnom Penh", url: "destinations.html" },
+    { name: "សៀមរាប", en: "Siem Reap", url: "siemreap.html" },
+    { name: "ព្រះសីហនុ", en: "Preah Sihanouk", url: "destinations.html" },
+    { name: "កំពត", en: "Kampot", url: "destinations.html" },
+    { name: "កែប", en: "Kep", url: "destinations.html" },
+    { name: "បាត់ដំបង", en: "Battambang", url: "destinations.html" },
+    { name: "មណ្ឌលគីរី", en: "Mondulkiri", url: "destinations.html" },
+    { name: "កោះ កុង", en: "Koh Kong", url: "destinations.html" }
+  ];
+
+  var input = document.getElementById('searchInput');
+  var box = document.getElementById('suggestions');
+
+  input.addEventListener('input', function() {
+    var val = this.value.trim().toLowerCase();
+    box.innerHTML = '';
+    if (!val) { box.classList.remove('open'); return; }
+
+    var matches = provinces.filter(function(p) {
+      return p.name.includes(val) || p.en.toLowerCase().includes(val);
+    });
+
+    if (matches.length === 0) { box.classList.remove('open'); return; }
+
+    matches.forEach(function(p) {
+      var div = document.createElement('div');
+      div.className = 'suggestion-item';
+      div.innerHTML = '<span class="s-name">' + p.name + '</span>';
+      div.onclick = function() {
+        input.value = p.name;
+        box.classList.remove('open');
+        window.location.href = p.url;
+      };
+      box.appendChild(div);
+    });
+
+    box.classList.add('open');
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-wrap')) box.classList.remove('open');
+  });
+
+  function handleSearch() {
+    var val = input.value.trim().toLowerCase();
+    var match = provinces.find(function(p) {
+      return p.name.includes(val) || p.en.toLowerCase().includes(val);
+    });
+    window.location.href = match ? match.url : 'destinations.html';
+  }
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSearch();
+  });
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

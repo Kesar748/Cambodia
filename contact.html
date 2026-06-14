@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ទំនាក់ទំនង — ទេសចរណ៍កម្ពុជា</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Noto Serif Khmer", serif;
+      background: #FAF7F2;
+      color: #1E1A16;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.97);
+      border-bottom: 1px solid #E8E0D5;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 32px;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      color: #8B2500;
+      font-weight: 700;
+      margin-right: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      color: #6B6055;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #8B2500;
+    }
+    .nav-links a.active {
+      color: #8B2500;
+      border-bottom: 2px solid #8B2500;
+      padding-bottom: 2px;
+    }
+    .nav-btn {
+      background: #8B2500;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .mobile-contact {
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1E1A16;
+      border-radius: 2px;
+    }
+    .page-hero {
+      position: relative;
+      height: 300px;
+      margin-top: 62px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/phnompenh.jpg') center / cover;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 10%, transparent);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content .label {
+      font-size: 0.75rem;
+      color: #C8922A;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .hero-content h1 {
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .hero-content p {
+      color: rgba(255,255,255,0.82);
+      max-width: 480px;
+    }
+    .channels-strip {
+      background: #8B2500;
+      padding: 0;
+    }
+    .channels-strip .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .channel-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 16px;
+      flex: 1;
+      min-width: 180px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .channel-item:last-child {
+      border-right: none;
+    }
+    .channel-item:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .channel-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .channel-item h4 {
+      color: #fff;
+      font-size: 0.88rem;
+      margin-bottom: 2px;
+    }
+    .channel-item p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+    }
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      padding: 52px 0 72px;
+      align-items: stretch;
+    }
+    .main-layout > div {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 36px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      flex: 1;
+    }
+    .form-card-label {
+      font-size: 0.75rem;
+      color: #C8922A;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .form-card h2 {
+      font-size: 1.5rem;
+      color: #1E1A16;
+      margin-bottom: 6px;
+    }
+    .form-card .form-intro {
+      font-size: 0.88rem;
+      color: #6B6055;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #F0EAE2;
+    }
+    .topic-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .topic-tab {
+      border: 2px solid #E8E0D5;
+      background: #fff;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: "Noto Serif Khmer", serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: #6B6055;
+      transition: all 0.2s;
+    }
+    .topic-tab:hover {
+      border-color: #C8922A;
+      color: #C8922A;
+    }
+    .topic-tab.active {
+      border-color: #8B2500;
+      background: #8B2500;
+      color: #fff;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: #6B6055;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .form-group label .req {
+      color: #8B2500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 2px solid #E8E0D5;
+      border-radius: 6px;
+      padding: 11px 14px;
+      font-family: "Noto Serif Khmer", serif;
+      font-size: 0.9rem;
+      color: #1E1A16;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #8B2500;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .submit-btn {
+      width: 100%;
+      background: #8B2500;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-family: "Noto Serif Khmer", serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 6px;
+    }
+    .submit-btn:hover {
+      opacity: 0.88;
+    }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-msg .check {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #4A5E4A;
+      color: #fff;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .success-msg h3 {
+      color: #4A5E4A;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .success-msg p {
+      color: #6B6055;
+      font-size: 0.88rem;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 26px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .info-card h3 {
+      font-size: 1rem;
+      color: #8B2500;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0EAE2;
+    }
+    .info-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .info-row:last-child {
+      margin-bottom: 0;
+    }
+    .info-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .info-row h4 {
+      font-size: 0.82rem;
+      color: #9B8E84;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+    .info-row p {
+      font-size: 0.9rem;
+      color: #1E1A16;
+      font-weight: 600;
+    }
+    .info-row small {
+      font-size: 0.75rem;
+      color: #9B8E84;
+    }
+    .info-row a {
+      color: #8B2500;
+    }
+    .hours-table {
+      width: 100%;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #F0EAE2;
+      font-size: 0.85rem;
+    }
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+    .hours-row .day {
+      color: #6B6055;
+    }
+    .hours-row .time {
+      font-weight: 600;
+    }
+    .hours-row .time.open {
+      color: #4A5E4A;
+    }
+    .hours-row .time.closed {
+      color: #C0504D;
+    }
+    .faq-section {
+      padding: 56px 0;
+      background: #fff;
+    }
+    .faq-section h2 {
+      font-size: 1.7rem;
+      color: #8B2500;
+      margin-bottom: 8px;
+    }
+    .faq-section .sub {
+      font-size: 0.9rem;
+      color: #6B6055;
+      margin-bottom: 32px;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .faq-item {
+      border: 2px solid #E8E0D5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+    .faq-q:hover {
+      background: #FAF7F2;
+    }
+    .faq-q.open {
+      color: #8B2500;
+      background: rgba(139,37,0,0.04);
+    }
+    .faq-arrow {
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .faq-q.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+    .faq-a {
+      display: none;
+      padding: 0 18px 14px;
+      font-size: 0.83rem;
+      color: #6B6055;
+      border-top: 1px solid #F0EAE2;
+    }
+    .faq-a.open {
+      display: block;
+    }
+    footer {
+      background: #1E1A16;
+      color: rgba(255,255,255,0.75);
+      padding: 40px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .footer-logo {
+      font-size: 1.2rem;
+      color: #C8922A;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+    footer h4 {
+      color: #fff;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 8px;
+    }
+    footer ul a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    footer ul a:hover {
+      color: #C8922A;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-btn {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-contact {
+        display: block;
+      }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 62px; left: 0; right: 0;
+        background: #FAF7F2;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid #E8E0D5;
+      }
+      .hero-content h1 {
+        font-size: 1.6rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .channels-strip .container {
+        flex-direction: column;
+      }
+      .channel-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">ទេសចរណ៍​កម្ពុជា</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="tips&guide.html">Tips & Guide</a>
+      <a href="contact.html" class="mobile-contact">Contact Us</a>
+    </div>
+    <a class="nav-btn" href="contact.html">Contact Us</a>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content"></div>
+</div>
+<div class="channels-strip">
+  <div class="container">
+
+    <a href="tel:+85512345678" class="channel-item">
+      <div class="channel-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <h4>ទូរស័ព្ទ</h4>
+        <p>+855 12 345 678</p>
+      </div>
+    </a>
+
+    <a href="mailto:contact@cambodiatravel.com" class="channel-item">
+      <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+      <div>
+        <h4>អ៊ីមែល</h4>
+        <p>contact@cambodiatravel.com</p>
+      </div>
+    </a>
+
+    <a href="https://t.me/cambodiatravel" class="channel-item">
+      <div class="channel-icon"><i class="fab fa-telegram"></i></div>
+      <div>
+        <h4>Telegram</h4>
+        <p>@cambodiatravel</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/85512345678" class="channel-item">
+      <div class="channel-icon"><i class="fab fa-whatsapp"></i></div>
+      <div>
+        <h4>WhatsApp</h4>
+        <p>+855 12 345 678</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+<div class="container main-layout">
+  <div>
+    <div class="form-card">
+      <h2>ផ្ញើសារមកយើង</h2>
+      <p class="form-intro">ជ្រើសរើសសំណួររបស់អ្នក ហើយបំពេញព័ត៌មាន </p>
+
+      <div class="topic-tabs">
+        <button class="topic-tab" onclick="setTopic(this)">
+          <i class="fas fa-plane-departure"></i> ការកក់ & ដំណើរ
+        </button>
+        <button class="topic-tab" onclick="setTopic(this)">
+          <i class="fas fa-map-location-dot"></i> ព័ត៌មានទេសចរ
+        </button>
+      </div>
+
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>នាមត្រកូល <span class="req">*</span></label>
+            <input type="text" id="lastName" placeholder="ឧ. ចាន់">
+          </div>
+          <div class="form-group">
+            <label>នាមខ្លួន <span class="req">*</span></label>
+            <input type="text" id="firstName" placeholder="ឧ. សុខា">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>អ៊ីមែល <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="yourname@email.com">
+          </div>
+          <div class="form-group">
+            <label>លេខទូរស័ព្ទ</label>
+            <input type="tel" id="phone" placeholder="+855 12 345 678">
+          </div>
+        </div>
+
+        <div class="form-group" id="bookingRefGroup" style="display:none;">
+          <label>លេខកក់ (ប្រសិនបើមាន)</label>
+          <input type="text" id="bookingRef" placeholder="ឧ. KH-123456">
+        </div>
+
+        <div class="form-group">
+          <label>ប្រធានបទ <span class="req">*</span></label>
+          <select id="subject">
+            <option value="">— ជ្រើសប្រធានបទ —</option>
+            <option>ព័ត៌មានអំពីដំណើរទេសចរ</option>
+            <option>ការកែប្រែ ឬលុបចោលការកក់</option>
+          </select>
+        </div>
+
+        <button class="submit-btn" onclick="submitForm()">Submit</button>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="check">✓</div>
+        <h3>សារបានផ្ញើដោយជោគជ័យ!</h3>
+        <p style="margin-bottom:16px;">អរគុណ! ក្រុមការងាររបស់យើងនឹងឆ្លើយតបក្នុងរយៈពេល <strong>24 ម៉ោង</strong> ។</p>
+        <button class="submit-btn" style="margin-top:20px; width:auto; padding:10px 24px;" onclick="resetForm()">ផ្ញើសារបន្ថែម</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="info-card">
+      <h3>ព័ត៌មានទំនាក់ទំនង</h3>
+
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+        <div>
+          <h4>អាស័យដ្ឋាន</h4>
+          <p>ផ្លូវ 51 ខ័ណ្ឌ ដូនពេញ</p>
+          <small>ភ្នំពេញ, ប្រទេសកម្ពុជា 12211</small>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <h4>ទូរស័ព្ទ</h4>
+          <p><a href="tel:+85512345678">+855 12 345 678</a></p>
+          <small>ផ្ទាល់ / Telegram / WhatsApp</small>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <h4>អ៊ីមែល</h4>
+          <p><a href="mailto:contact@cambodiatravel.com">contact@cambodiatravel.com</a></p>
+          <small>ក្រុមការងារឆ្លើយតប 24 ម៉ោង</small>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-globe"></i></div>
+        <div>
+          <h4>ការិយាល័យ</h4>
+          <p>ភ្នំពេញ, សៀមរាប, ព្រះសីហនុ</p>
+          <small>3 ការិយាល័យទូទាំងប្រទេស</small>
+        </div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3><i class="fas fa-clock"></i> ម៉ោងធ្វើការ</h3>
+
+      <div class="hours-table">
+        <div class="hours-row">
+          <span class="day"><i class="fas fa-calendar-week"></i> ច័ន្ទ – សុក្រ</span>
+          <span class="time open">8:00 – 18:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day"><i class="fas fa-calendar-day"></i> សៅរ៍</span>
+          <span class="time open">8:00 – 12:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day"><i class="fas fa-calendar-xmark"></i> អាទិត្យ</span>
+          <span class="time closed">បិទ</span>
+        </div>
+        <div class="hours-row">
+          <span class="day"><i class="fas fa-calendar-exclamation"></i> ថ្ងៃបុណ្យ</span>
+          <span class="time closed">ប្រែប្រួល</span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; padding:12px; background:#EEF2EE; border-radius:6px;">
+        <p style="font-size:0.78rem; color:#4A5E4A;">
+          <i class="fas fa-circle-check"></i>
+          <strong> Chat & Telegram:</strong> ពេញ 24/7 — ក្រុមការងារ online
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="faq-section">
+  <div class="container">
+    <h2>សំណួរដែលសួរញឹកញាប់</h2>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>តើខ្ញុំត្រូវការទិដ្ឋាការ ដើម្បីចូលប្រទេសកម្ពុជាឬទេ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          អ្នកអាចដាក់ស្នើ e-Visa តាមអនឡាញ ឬ Visa on Arrival បាន។ ទិដ្ឋាការទេសចរណ៍មានសុពលភាព 30 ថ្ងៃ តម្លៃ $30 USD។ ប្រទេសខ្លះអាចចូលដោយមិនត្រូវការ Visa។ សូមពិនិត្យតាម evisa.gov.kh។
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>តើការកក់ត្រូវបង់ប្រាក់ភ្លាមៗទេ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          ការកក់គឺជាការស្នើសុំជាមុន។ ក្រុមការងារនឹងទំនាក់ទំនងដើម្បីបញ្ជាក់ និងណែនាំអំពីការទូទាត់តាម ABA ឬ KHQR ។
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>តើអាចផ្លាស់ប្ដូរ ឬលុបចោលការកក់បានទេ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          អាចលុបចោលដោយឥតគិតថ្លៃក្នុងរយៈពេល 48 ម៉ោងក្រោយការកក់។ បន្ទាប់ពី 48 ម៉ោង នឹងមានការកាត់ថ្លៃ 20%។ មុនថ្ងៃធ្វើដំណើរ 24 ម៉ោង មិនអាចលុបចោលបានទេ។
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>កុមារគិតថ្លៃយ៉ាងដូចម្តេច?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          កុមារ​អាយុ 5–12 ឆ្នាំ បង់ 50%។ ក្រោម 5 ឆ្នាំ មិនគិតថ្លៃ។ អាយុ 13 ឆ្នាំឡើងទៅ គិតថ្លៃពេញ។
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>តើមានមគ្គុទេសក៍ភាសាអង់គ្លេសទេ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          មាន។ អ្នកអាចជ្រើសកញ្ចប់ Comfort ឬ Premium ហើយស្នើមគ្គុទេសក៍ភាសាអង់គ្លេស ចិន ជប៉ុន ឬកូរ៉េ ក្នុងសំណើពិសេស។
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>តើអាចរៀបចំដំណើរតាមតម្រូវការបានទេ?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          អាចបាន។ សូមផ្ញើព័ត៌មានអំពីចំណូលចិត្ត ចំនួនថ្ងៃ និងថវិកា ហើយយើងនឹងរៀបចំដំណើរតាមតម្រូវការផ្ទាល់ខ្លួន។
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">ទេសចរណ៍​កម្ពុជា</div>
+        <p>មគ្គុទ្ទេសក៍ដែលអ្នកទុកចិត្តបាន ដើម្បីស្វែងយល់ពីព្រះរាជាណាចក្រអស្ចារ្យ។</p>
+      </div>
+      <div>
+        <h4>គោលដៅ</h4>
+        <ul>
+          <li><a href="siemreap.html">សៀមរាប</a></li>
+          <li><a href="destinations.html">ភ្នំពេញ</a></li>
+          <li><a href="destinations.html">ព្រះសីហនុ</a></li>
+          <li><a href="destinations.html">ខេត្តទាំងអស់</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ស្វែងយល់</h4>
+        <ul>
+          <li><a href="about.html">អំពីកម្ពុជា</a></li>
+          <li><a href="practical.html">ព័ត៌មានទិដ្ឋាការ</a></li>
+          <li><a href="booking.html">កក់ដំណើរ</a></li>
+          <li><a href="contact.html">ទំនាក់ទំនង</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ក្រុមហ៊ុន</h4>
+        <ul>
+          <li><a href="#">អំពីយើង</a></li>
+          <li><a href="#">ភាពជាដៃគូ</a></li>
+          <li><a href="#">ការងារ</a></li>
+          <li><a href="#">គោលការណ៍ឯកជន</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ទេសចរណ៍​កម្ពុជា</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  var currentTopic = 'ទូទៅ';
+
+  function setTopic(btn) {
+    document.querySelectorAll('.topic-tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    currentTopic = btn.textContent.trim();
+
+    var isBooking = currentTopic.includes('កក់');
+
+    document.getElementById('bookingRefGroup').style.display = isBooking ? 'block' : 'none';
+
+    if (isBooking) {
+      document.getElementById('subject').value = 'ការផ្លាស់ប្ដូរ / លុបចោលការកក់';
+    }
+  }
+  function submitForm() {
+    var last = document.getElementById('lastName').value.trim();
+    var first = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var subject = document.getElementById('subject').value;
+
+    if (!last || !first) { alert('សូមបញ្ចូលឈ្មោះ!'); return; }
+    if (!email) { alert('សូមបញ្ចូលអ៊ីមែល!'); return; }
+    if (!subject){ alert('សូមជ្រើសប្រធានបទ!'); return; }
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').style.display  = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function resetForm() {
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('successMsg').style.display  = 'none';
+    document.getElementById('lastName').value  = '';
+    document.getElementById('firstName').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('subject').value = '';
+  }
+  function toggleFaq(el) {
+    var answer = el.nextElementSibling;
+    var isOpen = answer.classList.contains('open');
+
+    document.querySelectorAll('.faq-a').forEach(function(a) { a.classList.remove('open'); });
+    document.querySelectorAll('.faq-q').forEach(function(q) { q.classList.remove('open'); });
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      el.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
